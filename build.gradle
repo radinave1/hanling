@@ -1,0 +1,46 @@
+plugins {
+    id 'java'
+    id 'org.springframework.boot' version '3.2.2'
+    id 'io.spring.dependency-management' version '1.1.4'
+}
+
+ext {
+    lombokVersion = '1.18.28'
+    jetbrainsAnnotationsVersion = "23.1.0"
+
+}
+
+
+group = 'com.app'
+version = '0.0.1-SNAPSHOT'
+
+apply plugin: 'io.spring.dependency-management'
+
+
+java {
+    sourceCompatibility = '17'
+    targetCompatibility = '17'
+}
+
+repositories {
+    mavenCentral()
+}
+
+
+dependencies {
+
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+
+    implementation 'net.logstash.logback:logstash-logback-encoder:6.6' // or the latest version
+
+//    implementation 'org.springframework.boot:spring-boot-starter-log4j2'
+    implementation 'org.projectlombok:lombok:1.18.26'
+    // Add your other dependencies here
+
+    // ANNOTATIONS
+    compileOnly "org.projectlombok:lombok:${lombokVersion}"
+    annotationProcessor "org.projectlombok:lombok:${lombokVersion}"
+    implementation "org.jetbrains:annotations:${jetbrainsAnnotationsVersion}"
+
+}
+
